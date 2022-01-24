@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Interfaces\ISkillService.cs" />
-    <Compile Remove="Services\SkillService.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TorreAcademy.Core\TorreAcademy.Core.csproj" />
   </ItemGroup>
 

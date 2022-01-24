@@ -37,6 +37,7 @@ namespace TorreAcademy
             services.AddAutoMapper(typeof(MappingProfile));
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ISkillService, SkillService>();
             
             services.AddControllers();
             services.AddSwaggerGen(c =>
