@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20220124202056_SeedDataAdded.cs" />
+    <Compile Remove="Migrations\20220124202056_SeedDataAdded.Designer.cs" />
+    <Compile Remove="Migrations\20220124224252_test.cs" />
+    <Compile Remove="Migrations\20220124224252_test.Designer.cs" />
+    <Compile Remove="Migrations\20220124224359_AddRelationSkillAndUserSKill.cs" />
+    <Compile Remove="Migrations\20220124224359_AddRelationSkillAndUserSKill.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.22" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.22">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+</Project>
