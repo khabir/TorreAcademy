@@ -20,6 +20,8 @@ namespace TorreAcademy.Core.Data
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<UserOrganization> UserOrganizations { get; set; }
         public DbSet<Experience> Experiences { get; set; }
+        public DbSet<Proficiency> Proficiencies { get; set; }
+        
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

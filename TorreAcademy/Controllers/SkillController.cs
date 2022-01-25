@@ -24,5 +24,12 @@ namespace TorreAcademy.API.Controllers
             var data = await skillService.GetSkillsByUser(userId);
             return Ok(data);
         }
+
+        [HttpGet("Skills/All")]
+        public async Task<IActionResult> GetSkills()
+        {
+            var data = await skillService.GetAllSkills();
+            return Ok(data);
+        }
     }
 }

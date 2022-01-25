@@ -5,15 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Migrations\20220124202056_SeedDataAdded.cs" />
-    <Compile Remove="Migrations\20220124202056_SeedDataAdded.Designer.cs" />
-    <Compile Remove="Migrations\20220124224252_test.cs" />
-    <Compile Remove="Migrations\20220124224252_test.Designer.cs" />
-    <Compile Remove="Migrations\20220124224359_AddRelationSkillAndUserSKill.cs" />
-    <Compile Remove="Migrations\20220124224359_AddRelationSkillAndUserSKill.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.22" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="3.1.22" />

@@ -18,11 +18,18 @@ namespace TorreAcademy.API.Controllers
         {
             this.userService = userService;
         }
-       
+
         [HttpGet("GetUsersBySkill/{skillId}")]
         public async Task<IActionResult> GetUsersBySkill(Guid skillId)
         {
-            var data= await userService.GetUsersBySkill(skillId);
+            var data = await userService.GetUsersBySkill(skillId);
+            return Ok(data);
+        }
+
+        [HttpGet("Users/All")]
+        public async Task<IActionResult> GetUsers()
+        {
+            var data = await userService.GetUsers();
             return Ok(data);
         }
     }

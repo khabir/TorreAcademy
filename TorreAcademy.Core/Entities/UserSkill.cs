@@ -13,11 +13,12 @@ namespace TorreAcademy.Core.Entities
 
         public Guid SkillId { get; set; }
 
-        public Proficiency Proficiency { get; set; }
+        public Guid ProficiencyId { get; set; }
 
         public Status Status { get; set; }
         public virtual User User { get; set; }
         public virtual Skill Skill { get; set; }
+        public virtual Proficiency Proficiency { get; set; }
 
     }
 }

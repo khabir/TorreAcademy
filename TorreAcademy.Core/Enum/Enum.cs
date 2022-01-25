@@ -22,6 +22,6 @@ namespace TorreAcademy.Core.Enum
         Expert,
         Proficient,
         Novice,
-        NoExperienc
+        NoExperience
     }
 }

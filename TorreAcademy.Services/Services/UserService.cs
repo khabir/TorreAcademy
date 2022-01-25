@@ -31,5 +31,13 @@ namespace TorreAcademy.Services.Services
 
             return mapper.Map<List<UserDto>>(users);
         }
+
+        public async Task<List<UserDto>> GetUsers()
+        {
+            var users = await (from user in dbContext.Users
+                               select user).ToListAsync();
+
+            return mapper.Map<List<UserDto>>(users);
+        }
     }
 }

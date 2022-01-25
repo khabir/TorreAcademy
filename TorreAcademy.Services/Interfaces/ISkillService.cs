@@ -8,6 +8,7 @@ namespace TorreAcademy.Services.Interfaces
 {
     public interface ISkillService
     {
-        Task<List<SkillDto>> GetSkillsByUser(Guid userId);
+        Task<UserWiseSkillDto> GetSkillsByUser(Guid userId);
+        Task<List<SkillDto>> GetAllSkills();
     }
 }

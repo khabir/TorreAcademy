@@ -8,6 +8,7 @@ using TorreAcademy.Core.Data;
 using TorreAcademy.Core.Dtos;
 using TorreAcademy.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using TorreAcademy.Core.Enum;
 
 namespace TorreAcademy.Services.Services
 {
@@ -22,14 +23,52 @@ namespace TorreAcademy.Services.Services
             this.mapper = mapper;
         }
 
-        public async Task<List<SkillDto>> GetSkillsByUser(Guid userId)
+        public async Task<List<SkillDto>> GetAllSkills()
         {
             var skills = await (from skill in dbContext.Skills
                                 join userSkill in dbContext.UserSkills on skill.Id equals userSkill.SkillId
-                                where userSkill.UserId == userId
                                 select skill).ToListAsync();
 
             return mapper.Map<List<SkillDto>>(skills);
+        }
+
+        public async Task<UserWiseSkillDto> GetSkillsByUser(Guid userId)
+        {
+            var proficiencyWiseSkills = new List<ProficiencyWiseSkill>();
+
+            var skillList = await (from skill in dbContext.Skills
+                                   join userSkill in dbContext.UserSkills on skill.Id equals userSkill.SkillId
+                                   join usr in dbContext.Users on userSkill.UserId equals usr.Id
+                                   join prof in dbContext.Proficiencies on userSkill.ProficiencyId equals prof.Id
+                                   where userSkill.UserId == userId
+                                   orderby prof.Order
+                                   select new { UserId = usr.Id, usr.FirstName, usr.LastName, usr.Email, usr.Phone, usr.Status, SkillName = skill.Name, Proficiency = prof.Name }).ToListAsync();
+
+
+            if (skillList.Count() == 0) return null;
+
+            var skillGroup = skillList.GroupBy(x => x.Proficiency);
+
+            foreach (var grp in skillGroup)
+            {
+                var model = new ProficiencyWiseSkill();
+
+                var proficiency = grp.Key;
+
+                model.Proficiency = grp.Key;
+
+                foreach (var item in grp)
+                {
+                    model.Skills.Add(item.SkillName);
+                }
+                proficiencyWiseSkills.Add(model);
+            }
+
+            var user = skillList.FirstOrDefault();
+            var output = new UserWiseSkillDto { FirstName = user.FirstName, LastName = user.LastName, 
+                Email = user.Email, Phone= user.Phone, Status = user.Status.ToString(), UserId = user.UserId, ProficiencyWiseSkills = proficiencyWiseSkills };
+
+            return output;
         }
     }
 }

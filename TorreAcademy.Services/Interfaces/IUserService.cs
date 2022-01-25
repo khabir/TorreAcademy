@@ -9,5 +9,6 @@ namespace TorreAcademy.Services.Interfaces
     public interface IUserService
     {
         Task<List<UserDto>> GetUsersBySkill(Guid skillId);
+        Task<List<UserDto>> GetUsers();
     }
 }
