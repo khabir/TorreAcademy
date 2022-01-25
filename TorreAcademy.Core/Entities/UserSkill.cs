@@ -7,17 +7,17 @@ namespace TorreAcademy.Core.Entities
 {
     public class UserSkill
     {
-        public Guid? Id { get; set; }
+        public Guid Id { get; set; }
 
-        public Guid? UserId { get; set; }
+        public Guid UserId { get; set; }
 
-        public Guid? SkillId { get; set; }
+        public Guid SkillId { get; set; }
 
-        public int? Proficiency { get; set; }
+        public Proficiency Proficiency { get; set; }
 
         public Status Status { get; set; }
         public virtual User User { get; set; }
+        public virtual Skill Skill { get; set; }
 
     }
-
 }

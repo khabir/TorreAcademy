@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorreAcademy.Core.Enum;
 
 namespace TorreAcademy.Core.Dtos
 {
@@ -12,7 +13,7 @@ namespace TorreAcademy.Core.Dtos
 
         public string Description { get; set; }
         public string Proficiency { get; set; }
-
+        public Status Status { get; set; }
     }
 
 }

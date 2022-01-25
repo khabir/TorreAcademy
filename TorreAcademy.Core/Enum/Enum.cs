@@ -16,4 +16,12 @@ namespace TorreAcademy.Core.Enum
         Job,
         Other
     }
+    public enum Proficiency 
+    {
+        Master =1,
+        Expert,
+        Proficient,
+        Novice,
+        NoExperienc
+    }
 }
