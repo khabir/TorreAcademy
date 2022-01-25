@@ -10,5 +10,6 @@ namespace TorreAcademy.Services.Interfaces
     {
         Task<List<UserDto>> GetUsersBySkill(Guid skillId);
         Task<List<UserDto>> GetUsers();
+        Task<SkillWiseUserAndSkillDetailDto> GetSkillWiseUserAndSkillDetail(Guid userId, Guid skillId);
     }
 }

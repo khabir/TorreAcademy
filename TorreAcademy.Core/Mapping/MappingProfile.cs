@@ -13,6 +13,7 @@ namespace TorreAcademy.Core.Mapping
         {
             CreateMap<User, UserDto>().ReverseMap();
             CreateMap<Skill, SkillDto>().ReverseMap();
+            CreateMap<Experience, ExperienceDto>().ReverseMap();
         }
     }
 }
