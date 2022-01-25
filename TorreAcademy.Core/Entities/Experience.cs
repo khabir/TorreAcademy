@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorreAcademy.Core.Enum;
 
 namespace TorreAcademy.Core.Entities
 {
@@ -9,8 +10,6 @@ namespace TorreAcademy.Core.Entities
         public Guid Id { get; set; }
 
         public string Name { get; set; }
-
-        public string Category { get; set; }
 
         public string FromMonth { get; set; }
 
@@ -27,6 +26,8 @@ namespace TorreAcademy.Core.Entities
         public int? Rank { get; set; }
 
         public Guid? OrganizationId { get; set; }
+        public Status Status { get; set; }
+        public OrganizationCategory Category { get; set; }
 
         public Guid? UserId { get; set; }
         public virtual User User { get; set; }

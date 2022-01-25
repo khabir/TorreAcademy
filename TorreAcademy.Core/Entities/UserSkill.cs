@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TorreAcademy.Core.Enum;
 
 namespace TorreAcademy.Core.Entities
 {
@@ -14,7 +15,7 @@ namespace TorreAcademy.Core.Entities
 
         public int? Proficiency { get; set; }
 
-        public int? Status { get; set; }
+        public Status Status { get; set; }
         public virtual User User { get; set; }
 
     }
