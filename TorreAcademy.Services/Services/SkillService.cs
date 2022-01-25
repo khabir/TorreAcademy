@@ -42,7 +42,7 @@ namespace TorreAcademy.Services.Services
                                    join prof in dbContext.Proficiencies on userSkill.ProficiencyId equals prof.Id
                                    where userSkill.UserId == userId
                                    orderby prof.Order
-                                   select new { UserId = usr.Id, usr.FirstName, usr.LastName, usr.Email, usr.Phone, usr.Status, SkillName = skill.Name, Proficiency = prof.Name }).ToListAsync();
+                                   select new { UserId = usr.Id, usr.FirstName, usr.LastName, usr.Email, usr.Phone, usr.Status, SkillId = skill.Id, SkillName = skill.Name, Proficiency = prof.Name }).ToListAsync();
 
 
             if (skillList.Count() == 0) return null;
@@ -59,7 +59,7 @@ namespace TorreAcademy.Services.Services
 
                 foreach (var item in grp)
                 {
-                    model.Skills.Add(item.SkillName);
+                    model.Skills.Add(new SkillDto { Id = item.SkillId, Name = item.SkillName});
                 }
                 proficiencyWiseSkills.Add(model);
             }

@@ -19,6 +19,6 @@ namespace TorreAcademy.Core.Dtos
     public class ProficiencyWiseSkill
     {
         public string Proficiency { get; set; }
-        public List<string> Skills { get; set; } = new List<string>();
+        public List<SkillDto> Skills { get; set; } = new List<SkillDto>();
     }
 }
