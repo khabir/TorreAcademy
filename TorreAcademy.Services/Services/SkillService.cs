@@ -26,7 +26,7 @@ namespace TorreAcademy.Services.Services
         public async Task<List<SkillDto>> GetAllSkills()
         {
             var skills = await (from skill in dbContext.Skills
-                                join userSkill in dbContext.UserSkills on skill.Id equals userSkill.SkillId
+                                where skill.Status == Status.Active
                                 select skill).ToListAsync();
 
             return mapper.Map<List<SkillDto>>(skills);
@@ -40,9 +40,10 @@ namespace TorreAcademy.Services.Services
                                    join userSkill in dbContext.UserSkills on skill.Id equals userSkill.SkillId
                                    join usr in dbContext.Users on userSkill.UserId equals usr.Id
                                    join prof in dbContext.Proficiencies on userSkill.ProficiencyId equals prof.Id
-                                   where userSkill.UserId == userId
+                                   join userExp in dbContext.Experiences on usr.Id equals userExp.UserId
+                                   where userSkill.UserId == userId && userExp.Highlighted == true
                                    orderby prof.Order
-                                   select new { UserId = usr.Id, usr.FirstName, usr.LastName, usr.Email, usr.Phone, usr.Status, SkillId = skill.Id, SkillName = skill.Name, Proficiency = prof.Name }).ToListAsync();
+                                   select new { UserId = usr.Id, usr.FirstName, usr.LastName, usr.Email, usr.Phone, usr.Status, usr.ProfilePicture, RecentDesignation = userExp.Name, SkillId = skill.Id, SkillName = skill.Name, Proficiency = prof.Name }).ToListAsync();
 
 
             if (skillList.Count() == 0) return null;
@@ -66,7 +67,13 @@ namespace TorreAcademy.Services.Services
 
             var user = skillList.FirstOrDefault();
             var output = new UserWiseSkillDto { FirstName = user.FirstName, LastName = user.LastName, 
-                Email = user.Email, Phone= user.Phone, Status = user.Status.ToString(), UserId = user.UserId, ProficiencyWiseSkills = proficiencyWiseSkills };
+                Email = user.Email, Phone= user.Phone, Status = user.Status.ToString(), UserId = user.UserId, ProfilePicture = user.ProfilePicture, 
+                ProficiencyWiseSkills = proficiencyWiseSkills,
+                RecentExperience = new ExperienceDto
+                {
+                    Name = user.RecentDesignation
+                }
+            };
 
             return output;
         }

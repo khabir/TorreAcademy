@@ -32,7 +32,7 @@ namespace TorreAcademy.API.Controllers
             var data = await userService.GetUsers();
             return Ok(data);
         }
-        [HttpGet("user/{userId}/skill/{skillId}")]
+        [HttpGet("{userId}/skill/{skillId}")]
         public async Task<IActionResult> GetSkillWiseUserAndSkillDetail(Guid userId, Guid skillId)
         {
             var data = await userService.GetSkillWiseUserAndSkillDetail(userId, skillId);

@@ -21,6 +21,7 @@ namespace TorreAcademy.Core.Entities
 
         public Status Status { get; set; }
         public DateTime? CreatedDate { get; set; }
+        public string ProfilePicture { get; set; }
 
     }
 }

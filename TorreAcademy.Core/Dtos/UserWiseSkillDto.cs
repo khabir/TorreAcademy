@@ -13,6 +13,8 @@ namespace TorreAcademy.Core.Dtos
         public string Email { get; set; }
         public string Phone { get; set; }
         public string Status { get; set; }
+        public string ProfilePicture { get; set; }
+        public ExperienceDto RecentExperience { get; set; }
         public List<ProficiencyWiseSkill> ProficiencyWiseSkills { get; set; }
     }
 
